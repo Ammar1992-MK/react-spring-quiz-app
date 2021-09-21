@@ -1,12 +1,11 @@
 package com.example.quizapp.web;
 
 import com.example.quizapp.domain.QuizQuestions;
+import com.example.quizapp.domain.Result;
 import com.example.quizapp.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +23,13 @@ public class QuizController {
             List<QuizQuestions> quizQuestions =  quizService.fetchAllQuestions();
 
             return ResponseEntity.ok(quizQuestions);
+    }
+
+    @PutMapping("/api/answers")
+    public ResponseEntity<?> updateResult(@RequestBody Result result){
+        //call the service
+       Result updatedResult =  quizService.updateResult(result);
+
+       return ResponseEntity.ok(updatedResult);
     }
 }

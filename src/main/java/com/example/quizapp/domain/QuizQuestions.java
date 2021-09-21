@@ -5,6 +5,7 @@ public class QuizQuestions {
     private int id;
     private String question;
     private String[] answers;
+    private int answerId;
     private int indexOfRightAnswer;
 
     public QuizQuestions() {

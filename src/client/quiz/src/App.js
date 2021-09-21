@@ -1,10 +1,12 @@
 import {useEffect, useState} from 'react';
+import Result from './Result'
 import './App.css';
 
  function App() {
 
    const [quizzes, setQuizzes] = useState(null);
      const [currentIndex, setCurrentIndex] = useState(0);
+     const [result, setResult] = useState(null);
 
      const fetchQuiz = async () => {
 
@@ -18,23 +20,43 @@ import './App.css';
        }
      };
 
+     const sendAnswers = (answerId, questionId) => {
 
-     const handleClick = (correct) => {
-       if (correct) {
-         alert("Correct Answer");
-       } else {
-         alert("Wrong Answer!! :(")
-       }
+       fetch("http://localhost:8080/api/answers", {
+         method: "PUT",
+         headers: {
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify({ answerId, questionId }),
+       }).then(response => response.json()).then(data => {
+
+         setResult(data);
+       })
+
      }
 
-     const renderAnswers = (key, answer, correct) => {
-       return <div key={key} onClick={() => console.log("Clicked")}>{answer}</div>
+
+
+     const handleClick = (key) => {
+
+       setCurrentIndex(currentIndex + 1);
+       let id = key;
+       sendAnswers(key, quizzes[currentIndex].id)
+     }
+
+     const renderAnswers = (key, answer) => {
+       return <div key={key} id={key} onClick={() => handleClick(key)}>{answer}</div>
      }
 
      useEffect(fetchQuiz, [quizzes]);
 
      if (!quizzes) {
        return <div>loading...</div>;
+     }
+
+     if (currentIndex === quizzes.length - 1) {
+
+       return <Result fetchedResults={result} />
      }
 
      const quiz = quizzes[currentIndex];
@@ -46,7 +68,7 @@ import './App.css';
            <div>Question {count} : {quiz.question}</div>
            {quiz.answers ? quiz.answers.map((answer, i) => {
 
-             return renderAnswers(i, answer)
+             return renderAnswers(i, answer, quiz.indexOfRightAnswer === i)
            }) : "loading..."}
          </div>
        </div>
