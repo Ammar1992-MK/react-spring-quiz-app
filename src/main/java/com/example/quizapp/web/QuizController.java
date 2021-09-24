@@ -26,9 +26,9 @@ public class QuizController {
     }
 
     @PutMapping("/api/answers")
-    public ResponseEntity<?> updateResult(@RequestBody Result result){
+    public ResponseEntity<?> updateResult(@RequestBody int[] body){
         //call the service
-       Result updatedResult =  quizService.updateResult(result);
+       Result updatedResult =  quizService.updateResult(body);
 
        return ResponseEntity.ok(updatedResult);
     }

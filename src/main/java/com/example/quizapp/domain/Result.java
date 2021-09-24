@@ -1,46 +1,36 @@
 package com.example.quizapp.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Result {
 
-    private int answerId;
-    private int questionId;
-    private int countWrong;
-    private int countCorrect;
+    private List<Result> chosenAnswers = new ArrayList<>();
+    private int correctAnswers;
+    private int wrongAnswers;
 
-    public Result(int countWrong, int countCorrect) {
-        this.countWrong = countWrong;
-        this.countCorrect = countCorrect;
+
+    public List<Result> getChosenAnswers() {
+        return chosenAnswers;
     }
 
-    public void setCountWrong(int countWrong) {
-        this.countWrong = countWrong;
+    public void setChosenAnswers(List<Result> chosenAnswers) {
+        this.chosenAnswers = chosenAnswers;
     }
 
-    public void setCountCorrect(int countCorrect) {
-        this.countCorrect = countCorrect;
+    public int getCorrectAnswers() {
+        return correctAnswers;
     }
 
-    public void setAnswerId(int answerId) {
-        this.answerId = answerId;
+    public int getWrongAnswers() {
+        return wrongAnswers;
     }
 
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    public void setCorrectAnswers(int correctAnswers) {
+        this.correctAnswers = correctAnswers;
     }
 
-    public int getCountWrong() {
-        return countWrong;
-    }
-
-    public int getCountCorrect() {
-        return countCorrect;
-    }
-
-    public int getAnswerId() {
-        return answerId;
-    }
-
-    public int getQuestionId() {
-        return questionId;
+    public void setWrongAnswers(int wrongAnswers) {
+        this.wrongAnswers = wrongAnswers;
     }
 }

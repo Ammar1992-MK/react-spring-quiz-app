@@ -17,35 +17,39 @@ public class QuizService {
 
     @Autowired
     private QuizRepository quizRepo;
-    private Result result = new Result(0,0);
-    private int correctCounter = 0;
-    private int wrongCounter = 0;
+
 
     public List<QuizQuestions> fetchAllQuestions (){
        return quizRepo.fetchQuiz();
     }
 
-    public Result updateResult (Result result){
+    public Result updateResult (int[] body){
 
         //stream array list of quizzes
-        //if questionId = question Id && answer7Id == indexOfRight Answer correct ++ else wrong++
+        //answerId == indexOfRight Answer correct ++ else wrong++
+
+         int correctCounter = 0;
+         int wrongCounter = 0;
 
         List<QuizQuestions> quizList = quizRepo.fetchQuiz();
-
-
+        Result result = new Result();
         for(int i = 0; i < quizList.size(); i++){
-            if(quizList.get(i).getId() == result.getQuestionId() && quizList.get(i).getIndexOfRightAnswer() == result.getQuestionId()){
-                correctCounter++;
-                result.setCountCorrect(correctCounter);
-            } else {
-                wrongCounter++;
-                result.setCountWrong(wrongCounter);
-            }
 
+            if(quizList.get(i).getIndexOfRightAnswer() == body[i]){
+                 correctCounter++;
+
+            } else {
+
+                wrongCounter++;
+            }
         }
+
+        result.setCorrectAnswers(correctCounter);
+        result.setWrongAnswers(wrongCounter);
 
         return result;
 
     }
+
 }
 

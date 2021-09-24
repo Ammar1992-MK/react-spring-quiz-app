@@ -29,9 +29,11 @@ const Result = ({ data }) => {
 
     return (
         <div className={"results"}>
-            <div>Results</div>
-            <div>{results.correctAnswers} correct</div>
-            <div>{results.wrongAnswers} wrong</div>
+            <div className={"result-title"}>Results</div>
+            <div className={"result-container"}>
+                <div className={"result-correct"}>{results.correctAnswers} correct</div>
+                <div className={"result-wrong"}>{results.wrongAnswers} wrong</div>
+            </div>
         </div>
     )
 }
