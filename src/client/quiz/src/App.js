@@ -7,7 +7,7 @@ function App() {
   const [quizzes, setQuizzes] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [chosenAnswers, setChosenAnswers] = useState([]);
-  const [clickedAnswer, setClickedAnswer] = useState();
+  const [clickedAnswer, setClickedAnswer] = useState(null);
   const [isActive, setIsActive] = useState(null);
 
   //fetch quiz from server
@@ -30,8 +30,11 @@ function App() {
     } else {
       alert("You must choose an answer to continue");
     }
-    setChosenAnswers((chosenAnswers) => [...chosenAnswers, clickedAnswer]);
-    console.log(chosenAnswers);
+
+    if(clickedAnswer !== null){
+          setChosenAnswers((chosenAnswers) => [...chosenAnswers, clickedAnswer]);
+           console.log(chosenAnswers);
+    }
   };
 
   // and keep track of the chosen answers
