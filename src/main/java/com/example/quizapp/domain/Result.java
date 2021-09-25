@@ -10,12 +10,17 @@ public class Result {
     private int wrongAnswers;
 
 
-    public List<Result> getChosenAnswers() {
-        return chosenAnswers;
+
+    public void setCorrectAnswers(int correctAnswers) {
+        this.correctAnswers = correctAnswers;
     }
 
-    public void setChosenAnswers(List<Result> chosenAnswers) {
-        this.chosenAnswers = chosenAnswers;
+    public void setWrongAnswers(int wrongAnswers) {
+        this.wrongAnswers = wrongAnswers;
+    }
+
+    public List<Result> getChosenAnswers() {
+        return chosenAnswers;
     }
 
     public int getCorrectAnswers() {
@@ -24,13 +29,5 @@ public class Result {
 
     public int getWrongAnswers() {
         return wrongAnswers;
-    }
-
-    public void setCorrectAnswers(int correctAnswers) {
-        this.correctAnswers = correctAnswers;
-    }
-
-    public void setWrongAnswers(int wrongAnswers) {
-        this.wrongAnswers = wrongAnswers;
     }
 }
