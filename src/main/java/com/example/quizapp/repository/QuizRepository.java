@@ -1,7 +1,6 @@
 package com.example.quizapp.repository;
 
 import com.example.quizapp.domain.QuizQuestions;
-import com.example.quizapp.domain.RightAnswer;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ public class QuizRepository {
     private List<QuizQuestions> questions = new ArrayList<>();
     private int idCounter = 0;
 
-    RightAnswer rightAnswer = new RightAnswer();
 
     public List<QuizQuestions> fetchQuiz(){
 
