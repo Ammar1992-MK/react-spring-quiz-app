@@ -42,6 +42,27 @@ public class QuizRepository {
             questions4.setAnswers(new String[]{"CIA","JPG","ICBM","IBM"});
             questions4.setIndexOfRightAnswer(1);
             questions.add(questions4);
+
+            QuizQuestions questions5 = new QuizQuestions();
+            questions5.setId(++idCounter);
+            questions5.setQuestion("What is part of a database that holds only one type of information?");
+            questions5.setAnswers(new String[]{"Report","File","Record","Field"});
+            questions5.setIndexOfRightAnswer(3);
+            questions.add(questions5);
+
+            QuizQuestions questions6 = new QuizQuestions();
+            questions6.setId(++idCounter);
+            questions6.setQuestion("'OS' computer abbreviation usually means ?");
+            questions6.setAnswers(new String[]{"Order of Significance","Open Software","Operating System","Optical Sensor"});
+            questions6.setIndexOfRightAnswer(2);
+            questions.add(questions6);
+
+            QuizQuestions questions7 = new QuizQuestions();
+            questions7.setId(++idCounter);
+            questions7.setQuestion("How many bits is a byte? ?");
+            questions7.setAnswers(new String[]{"8","4","32","16"});
+            questions7.setIndexOfRightAnswer(0);
+            questions.add(questions7);
         }
         return questions;
     }
