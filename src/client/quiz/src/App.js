@@ -7,6 +7,7 @@ function App() {
   const [quizzes, setQuizzes] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [chosenAnswers, setChosenAnswers] = useState([]);
+  const [clickedAnswer, setClickedAnswer] = useState();
   const [isActive, setIsActive] = useState(null);
 
   //fetch quiz from server
@@ -21,6 +22,7 @@ function App() {
     }
   };
 
+// render the nest question
   const handleNextQuestion = () => {
     if (isActive !== null) {
       setCurrentIndex(currentIndex + 1);
@@ -28,13 +30,16 @@ function App() {
     } else {
       alert("You must choose an answer to continue");
     }
+    setChosenAnswers((chosenAnswers) => [...chosenAnswers, clickedAnswer]);
+    console.log(chosenAnswers);
   };
 
-  // render the next question and keep track of the chosen answers
+  // and keep track of the chosen answers
   const handleClick = (key) => {
     setIsActive(key);
     let answerId = key;
-    setChosenAnswers((chosenAnswers) => [...chosenAnswers, answerId]);
+    setClickedAnswer(answerId);
+    console.log(chosenAnswers)
   };
 
   //render fetched options/answers from server
